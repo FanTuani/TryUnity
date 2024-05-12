@@ -21,14 +21,12 @@ public class Timer : MonoBehaviour {
     private void Update() {
         coolDown -= Time.deltaTime;
         if (coolDown <= 0) {
+            action();
             if (interval == 0) {
-                action();
                 Destroy(this);
-            }
-            else {
+            } else {
                 invCoolDown -= Time.deltaTime;
                 if (invCoolDown <= 0) {
-                    action();
                     invCoolDown = interval;
                 }
             }

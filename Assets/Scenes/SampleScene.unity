@@ -340,9 +340,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 162a8c824a8629e4b838ffdd3a33cbbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTrans: {fileID: 1012058468}
+  player: {fileID: 1012058466}
   rb: {fileID: 519420033}
+  camera: {fileID: 519420031}
   speed: 200
+  basicViewSize: 4
 --- !u!1 &534980062
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,11 +415,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1012058468}
   - component: {fileID: 1012058467}
-  - component: {fileID: 1012058466}
   - component: {fileID: 1012058469}
   - component: {fileID: 1012058471}
   - component: {fileID: 1012058472}
   - component: {fileID: 1012058473}
+  - component: {fileID: 1012058474}
+  - component: {fileID: 1012058466}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -437,8 +440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b26bee9c6d645234dbffc8e7d76fc229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 1012058474}
   speed: 200
-  rb: {fileID: 1012058469}
 --- !u!212 &1012058467
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -702,6 +705,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1012058474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012058465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19cd03e16319309429f67947c134fede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1012058469}
+  player: {fileID: 1012058466}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
