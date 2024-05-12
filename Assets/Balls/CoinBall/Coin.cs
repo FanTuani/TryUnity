@@ -12,7 +12,6 @@ public class Coin : MonoBehaviour {
         Animator animator = other.gameObject.GetComponent<Animator>();
         animator.SetTrigger("GetCoin");
 
-        Destroy(this.gameObject);
-        CoinManager.instance.collectCoin(1);
+        CoinManager.instance.collectCoin(gameObject);
     }
 }

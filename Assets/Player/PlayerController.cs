@@ -3,13 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
-    public float speed;
+public class PlayerController : MonoBehaviour {
     public Rigidbody2D rb;
-    private bool onMagic = false;
-
-    void Start() {
-    }
+    public Player player;
 
     void FixedUpdate() {
         moveUpdate();
@@ -17,7 +13,6 @@ public class Player : MonoBehaviour {
 
     void Update() {
         dashUpdate();
-        magicUpdate();
     }
 
     Vector3 getMoveDir() {
@@ -31,26 +26,11 @@ public class Player : MonoBehaviour {
 
     void moveUpdate() {
         Vector3 dir = getMoveDir();
-        rb.AddForce(dir * speed);
+        rb.AddForce(dir * player.speed);
     }
 
     void dashUpdate() {
         if (!Input.GetKeyDown("space")) return;
-        Vector3 dir = getMoveDir();
-        rb.AddForce(dir * (speed * 10));
-    }
-
-    void magicUpdate() {
-        if (Input.GetKeyDown("r")) {
-            onMagic = !onMagic;
-        }
-
-        if (onMagic) {
-            Coin[] coins = GameObject.FindObjectsOfType<Coin>();
-            foreach (var coin in coins) {
-                Rigidbody2D coinRb = coin.GetComponent<Rigidbody2D>();
-                coinRb.AddForce((transform.position - coin.transform.position) * 10f);
-            }
-        }
+        player.dash(getMoveDir());
     }
 }

@@ -2,12 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class CoinManager : MonoBehaviour {
     public static CoinManager instance;
     public int targetCoinNum = 5;
     public GameObject coinTemplate;
+
+    [FormerlySerializedAs("AccBallTemplate")]
+    public GameObject accBallTemplate;
 
     private int collectedCoinNum = 0;
 
@@ -17,7 +21,7 @@ public class CoinManager : MonoBehaviour {
         }
 
         for (int i = 0; i < targetCoinNum; i++) {
-            spawnCoinRandomly();
+            spawnBallRandomly();
         }
     }
 
@@ -35,26 +39,32 @@ public class CoinManager : MonoBehaviour {
         return coin;
     }
 
-    private GameObject spawnCoinRandomly() {
-        GameObject coin = Instantiate(coinTemplate);
+    private GameObject spawnBallRandomly() {
+        GameObject ball = default;
+        if (Random.Range(0, 5) == 0) {
+            ball = Instantiate(accBallTemplate);
+        }
+        else {
+            ball = Instantiate(coinTemplate);
+        }
 
         Vector2 randomScreenPosition =
             new Vector2(Random.Range(0, Screen.width), Random.Range(0, Screen.height));
-
         Vector3 position = Camera.main.ScreenToWorldPoint(randomScreenPosition);
         position.z = 0f;
+        ball.transform.position = position;
 
-        coin.transform.position = position;
-        return coin;
+        return ball;
     }
 
-    public int collectCoin(int num) {
-        collectedCoinNum += num;
+    public int collectCoin(GameObject coin) {
+        collectedCoinNum++;
         if (collectedCoinNum == targetCoinNum) {
             GameManager.instance.winGame();
         }
 
-        spawnCoinRandomly();
+        Destroy(coin);
+        spawnBallRandomly();
 
         return collectedCoinNum;
     }
