@@ -36,5 +36,6 @@ public class Player : MonoBehaviour {
         sequence.Append(renderer.DOColor(Color.yellow, 0.08f));
         sequence.Append(renderer.DOColor(Color.green, 1f));
         CoinManager.instance.collectCoin(coin);
+        CoinTextManager.instance.updateCoinText();
     }
 }

@@ -41,7 +41,7 @@ public class CoinManager : MonoBehaviour {
 
     public GameObject spawnBallRandomly() {
         GameObject ball = default;
-        if (Random.Range(0, 5) == 0) {
+        if (Random.Range(0, 7) == 0) {
             ball = Instantiate(accBallTemplate);
         } else {
             ball = Instantiate(coinTemplate);
