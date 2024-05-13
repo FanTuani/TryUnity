@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class CoinManager : MonoBehaviour {
     public static CoinManager instance;
-    public int targetCoinNum = 5;
+    public int targetCoinNum;
     public GameObject coinTemplate;
 
     [FormerlySerializedAs("AccBallTemplate")]
@@ -39,7 +39,7 @@ public class CoinManager : MonoBehaviour {
         return coin;
     }
 
-    private GameObject spawnBallRandomly() {
+    public GameObject spawnBallRandomly() {
         GameObject ball = default;
         if (Random.Range(0, 5) == 0) {
             ball = Instantiate(accBallTemplate);
@@ -57,14 +57,11 @@ public class CoinManager : MonoBehaviour {
         return ball;
     }
 
-    public int collectCoin(GameObject coin) {
+    public int collectCoin(Coin coin) {
         collectedCoinNum++;
         if (collectedCoinNum == targetCoinNum) {
             GameManager.instance.winGame();
         }
-
-        Destroy(coin);
-        spawnBallRandomly();
 
         return collectedCoinNum;
     }

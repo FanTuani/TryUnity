@@ -9,9 +9,9 @@ public class Coin : MonoBehaviour {
             return;
         }
 
-        Animator animator = other.gameObject.GetComponent<Animator>();
-        animator.SetTrigger("GetCoin");
-
-        CoinManager.instance.collectCoin(gameObject);
+        Player player = other.GetComponent<Player>();
+        player.collectCoin(this);
+        Destroy(gameObject);
+        CoinManager.instance.spawnBallRandomly();
     }
 }
