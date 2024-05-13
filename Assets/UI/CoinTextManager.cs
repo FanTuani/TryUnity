@@ -12,7 +12,10 @@ public class CoinTextManager : MonoBehaviour {
     private float timer;
 
     void Start() {
-        instance = this;
+        if (instance == null) {
+            instance = this;
+        }
+
         timer = 0;
     }
 
@@ -27,6 +30,11 @@ public class CoinTextManager : MonoBehaviour {
         if (CoinManager.instance.collectedCoinNum >= CoinManager.instance.targetCoinNum) {
             hasScore = true;
             coinText.SetText(Math.Round(timer, 2).ToString(CultureInfo.InvariantCulture));
+            DOTween.To(() => coinText.fontSize,
+                val => coinText.fontSize = val, 46, 0.1f);
+            DOTween.To(() => coinText.fontSize,
+                    val => coinText.fontSize = val, 30, 1f)
+                .SetDelay(0.1f);
         } else {
             coinText.SetText(CoinManager.instance.collectedCoinNum.ToString());
             DOTween.To(() => coinText.fontSize,
@@ -34,7 +42,6 @@ public class CoinTextManager : MonoBehaviour {
             DOTween.To(() => coinText.fontSize,
                     val => coinText.fontSize = val, 22, 0.4f)
                 .SetDelay(0.1f);
-            ;
         }
     }
 }

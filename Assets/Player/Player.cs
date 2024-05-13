@@ -31,11 +31,11 @@ public class Player : MonoBehaviour {
         gameObject.AddComponent<Timer>().runTaskLater(() => { speed -= speedOffset; }, duration);
     }
 
-    public void collectCoin(Coin coin) {
+    public void collectCoin(GameObject coinObj) {
         Sequence sequence = DOTween.Sequence();
         sequence.Append(renderer.DOColor(Color.yellow, 0.08f));
         sequence.Append(renderer.DOColor(Color.green, 1f));
-        CoinManager.instance.collectCoin(coin);
+        CoinManager.instance.collectCoin(coinObj);
         CoinTextManager.instance.updateCoinText();
     }
 }

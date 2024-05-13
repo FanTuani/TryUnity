@@ -10,7 +10,7 @@ public class Coin : MonoBehaviour {
         }
 
         Player player = other.GetComponent<Player>();
-        player.collectCoin(this);
+        player.collectCoin(gameObject);
         Destroy(gameObject);
         CoinManager.instance.spawnBallRandomly();
     }
