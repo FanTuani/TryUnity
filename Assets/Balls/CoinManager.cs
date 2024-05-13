@@ -11,17 +11,16 @@ public class CoinManager : MonoBehaviour {
     public GameObject coinTemplate;
     public SpriteRenderer bkgRenderer;
 
-    [FormerlySerializedAs("AccBallTemplate")]
     public GameObject accBallTemplate;
 
-    private int collectedCoinNum = 0;
+    public int collectedCoinNum = 0;
 
     private void Start() {
         if (instance == null) {
             instance = this;
         }
 
-        for (int i = 0; i < targetCoinNum; i++) {
+        for (int i = 0; i < 20; i++) {
             spawnBallRandomly();
         }
     }

@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour {
     public PlayerController controller;
+    public Rigidbody2D rb;
     public new SpriteRenderer renderer;
     public float speed;
 
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour {
         speedEffect(100, 0.2f);
         controller.rb.AddForce(dir * (speed * 10));
 
+        // dash animation
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
         Sequence sequence = DOTween.Sequence();

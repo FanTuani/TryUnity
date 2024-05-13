@@ -463,7 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef369155cd7324542ba544d01b3bb08f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetCoinNum: 5
+  targetCoinNum: 20
   coinTemplate: {fileID: 8273567087161203978, guid: 41ab1ecd1fbe1b14fa91bfeae183da89, type: 3}
   bkgRenderer: {fileID: 61743109}
   accBallTemplate: {fileID: 5933756080749080122, guid: e75a519feecbcff408305d3d55385fc3, type: 3}
@@ -517,6 +517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1012058474}
+  rb: {fileID: 1012058469}
   renderer: {fileID: 1012058467}
   speed: 200
 --- !u!212 &1012058467
