@@ -9,6 +9,7 @@ public class CoinManager : MonoBehaviour {
     public static CoinManager instance;
     public int targetCoinNum;
     public GameObject coinTemplate;
+    public SpriteRenderer bkgRenderer;
 
     [FormerlySerializedAs("AccBallTemplate")]
     public GameObject accBallTemplate;
@@ -43,15 +44,17 @@ public class CoinManager : MonoBehaviour {
         GameObject ball = default;
         if (Random.Range(0, 5) == 0) {
             ball = Instantiate(accBallTemplate);
-        }
-        else {
+        } else {
             ball = Instantiate(coinTemplate);
         }
 
-        Vector2 randomScreenPosition =
-            new Vector2(Random.Range(0, Screen.width), Random.Range(0, Screen.height));
-        Vector3 position = Camera.main.ScreenToWorldPoint(randomScreenPosition);
-        position.z = 0f;
+
+        // Vector2 randomScreenPosition =
+        // new Vector2(Random.Range(0, Screen.width), Random.Range(0, Screen.height));
+        // Vector3 position = Camera.main.ScreenToWorldPoint(randomScreenPosition);
+        Bounds bounds = bkgRenderer.bounds;
+        Vector3 position = new Vector3(Random.Range(-bounds.extents.x, bounds.extents.x),
+            Random.Range(-bounds.extents.y, bounds.extents.y), 0);
         ball.transform.position = position;
 
         return ball;
@@ -60,7 +63,7 @@ public class CoinManager : MonoBehaviour {
     public int collectCoin(Coin coin) {
         collectedCoinNum++;
         if (collectedCoinNum == targetCoinNum) {
-            GameManager.instance.winGame();
+            // GameManager.instance.winGame();
         }
 
         return collectedCoinNum;
