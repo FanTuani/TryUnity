@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
         dashUpdate();
     }
 
-    public Vector3 getMoveDir() {
+    private Vector3 getInputMoveDir() {
         Vector3 dir = default;
         if (Input.GetKey("w")) dir += Vector3.up * Time.deltaTime;
         if (Input.GetKey("a")) dir += Vector3.left * Time.deltaTime;
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void moveUpdate() {
-        Vector3 dir = getMoveDir();
+        Vector3 dir = getInputMoveDir();
         if (Input.GetKey(KeyCode.LeftShift)) {
             rb.AddForce(dir * player.speed / 2);
         } else {
@@ -35,6 +35,6 @@ public class PlayerController : MonoBehaviour {
 
     void dashUpdate() {
         if (!Input.GetKeyDown("space")) return;
-        player.dash(getMoveDir());
+        player.dash(getInputMoveDir());
     }
 }

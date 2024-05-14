@@ -59,9 +59,9 @@ public class CoinManager : MonoBehaviour {
         return ball;
     }
 
-    public int collectCoin(GameObject coinObj) {
+    public int collectCoin(GameObject coinObj, Vector3 push = default) {
         collectedCoinNum++;
-        ParticleManager.instance.spawnCoinParticle(coinObj.transform.position);
+        ParticleManager.instance.spawnCoinParticle(coinObj.transform.position, push);
         if (collectedCoinNum == targetCoinNum) {
             // GameManager.instance.winGame();
         }

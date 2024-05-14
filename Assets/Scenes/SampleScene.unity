@@ -581,6 +581,7 @@ GameObject:
   - component: {fileID: 534980064}
   - component: {fileID: 534980063}
   - component: {fileID: 534980066}
+  - component: {fileID: 534980067}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -645,6 +646,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinParTemp: {fileID: 3041940303991965072, guid: 7210bb3563d3b6a4e9f200780f7aad0c, type: 3}
+--- !u!114 &534980067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534980062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a26de499d7319ec46bb9427f0aee948a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &894102011
 GameObject:
   m_ObjectHideFlags: 0

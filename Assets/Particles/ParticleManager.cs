@@ -14,7 +14,7 @@ public class ParticleManager : MonoBehaviour {
         }
     }
 
-    public void spawnCoinParticle(Vector3 position) {
+    public void spawnCoinParticle(Vector3 position, Vector3 push = default) {
         int parNum = 8;
         for (int i = 0; i < parNum; i++) {
             GameObject particle = Instantiate(coinParTemp);
@@ -29,10 +29,10 @@ public class ParticleManager : MonoBehaviour {
                     color.a = val;
                     renderer.color = color;
                 }, 0, 0.5f);
-            new Timer().runTaskLater(() => {
-                Destroy(particle);
-            }, 0.5f);
+            new Timer().runTaskLater(() => { Destroy(particle); }, 0.5f);
             rb.AddForce(dir);
+            rb.AddForce(push * 30f);
+            rb.AddForce(push * Mathf.Max(0, Vector3.Dot(dir, push)) / 1000f);
         }
     }
 }
