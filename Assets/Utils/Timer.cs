@@ -1,35 +1,16 @@
 using System;
 using UnityEngine;
 
-public class Timer : MonoBehaviour {
-    private Action action;
-    private float coolDown;
-    private float interval, invCoolDown;
+public class Timer {
+    public Action action;
+    public float coolDown;
+
+    public Timer() {
+        TimerManager.timers.Add(this);
+    }
 
     public void runTaskLater(Action action, float coolDown) {
         this.action = action;
         this.coolDown = coolDown;
-    }
-
-    public void runTaskTimer(Action action, float coolDown, float interval) {
-        this.action = action;
-        this.coolDown = coolDown;
-        this.interval = interval;
-        this.invCoolDown = interval;
-    }
-
-    private void Update() {
-        coolDown -= Time.deltaTime;
-        if (coolDown <= 0) {
-            action();
-            if (interval == 0) {
-                Destroy(this);
-            } else {
-                invCoolDown -= Time.deltaTime;
-                if (invCoolDown <= 0) {
-                    invCoolDown = interval;
-                }
-            }
-        }
     }
 }

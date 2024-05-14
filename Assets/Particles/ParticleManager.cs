@@ -29,7 +29,7 @@ public class ParticleManager : MonoBehaviour {
                     color.a = val;
                     renderer.color = color;
                 }, 0, 0.5f);
-            gameObject.AddComponent<Timer>().runTaskLater(() => {
+            new Timer().runTaskLater(() => {
                 Destroy(particle);
             }, 0.5f);
             rb.AddForce(dir);

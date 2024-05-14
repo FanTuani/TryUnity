@@ -12,8 +12,8 @@ public class Player : MonoBehaviour {
 
     public void dash(Vector3 dir) {
         controller.rb.drag -= 5;
-        gameObject.AddComponent<Timer>().runTaskLater(() => { controller.rb.drag += 5; }, 0.2f);
-        speedEffect(100, 0.2f);
+        new Timer().runTaskLater(() => { controller.rb.drag += 5; }, 0.2f);
+        addSpeed(100, 0.2f);
         controller.rb.AddForce(dir * (speed * 10));
 
         // dash animation
@@ -26,9 +26,9 @@ public class Player : MonoBehaviour {
         sequence.Append(transform.DOScaleX(1f, 0.08f));
     }
 
-    public void speedEffect(float speedOffset, float duration) {
+    public void addSpeed(float speedOffset, float duration) {
         speed += speedOffset;
-        gameObject.AddComponent<Timer>().runTaskLater(() => { speed -= speedOffset; }, duration);
+        new Timer().runTaskLater(() => { speed -= speedOffset; }, duration);
     }
 
     public void collectCoin(GameObject coinObj) {

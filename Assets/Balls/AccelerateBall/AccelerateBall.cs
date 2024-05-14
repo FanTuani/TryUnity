@@ -9,7 +9,7 @@ public class AccelerateBall : MonoBehaviour {
         }
 
         Player player = other.gameObject.GetComponent<Player>();
-        player.speedEffect(100, 2);
+        player.addSpeed(100, 2);
         Destroy(gameObject);
         CoinManager.instance.spawnBallRandomly();
     }
