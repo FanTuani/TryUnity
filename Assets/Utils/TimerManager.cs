@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class TimerManager : MonoBehaviour {
@@ -16,8 +13,9 @@ public class TimerManager : MonoBehaviour {
         foreach (Timer timer in timers) {
             timer.coolDown -= Time.deltaTime;
             if (timer.coolDown <= 0) {
-                timer.action();
                 removeTimers.Add(timer);
+                if (!gameObject) continue;
+                timer.action();
             }
         }
 

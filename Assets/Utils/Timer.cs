@@ -4,8 +4,13 @@ using UnityEngine;
 public class Timer {
     public Action action;
     public float coolDown;
+    public GameObject gameObject;
 
-    public Timer() {
+    // public Timer() {
+    //     TimerManager.timers.Add(this);
+    // }
+    public Timer(GameObject gameObject) {
+        this.gameObject = gameObject;
         TimerManager.timers.Add(this);
     }
 

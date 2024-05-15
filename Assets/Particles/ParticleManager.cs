@@ -29,7 +29,7 @@ public class ParticleManager : MonoBehaviour {
                     color.a = val;
                     renderer.color = color;
                 }, 0, 0.5f);
-            new Timer().runTaskLater(() => { Destroy(particle); }, 0.5f);
+            new Timer(gameObject).runTaskLater(() => { Destroy(particle); }, 0.5f);
             rb.AddForce(dir);
             rb.AddForce(push * 30f);
             rb.AddForce(push * Mathf.Max(0, Vector3.Dot(dir, push)) / 1000f);

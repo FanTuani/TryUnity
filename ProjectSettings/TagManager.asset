@@ -8,12 +8,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - GameObject
   - Water
   - UI
-  - Player
-  - Coin
-  - Background
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -40,4 +40,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2425651459
+    locked: 0
+  - name: TileMap
+    uniqueID: 3042760695
+    locked: 0
+  - name: Trail
+    uniqueID: 4250941897
+    locked: 0
+  - name: GameObject
+    uniqueID: 4189426099
+    locked: 0
+  - name: Effects
+    uniqueID: 3491118033
     locked: 0

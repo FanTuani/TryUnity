@@ -19,7 +19,7 @@ public class Player : MonoBehaviour {
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
         // float mappedRatio = (float)Math.Log10(10 + getVelocity().magnitude) - 1;
         float mappedRatio = getVelocity().magnitude;
-        mappedRatio /= 150;
+        mappedRatio /= 100;
         transform.localScale = new Vector3(1 + mappedRatio, 1 - mappedRatio, 0);
     }
 
@@ -29,14 +29,16 @@ public class Player : MonoBehaviour {
 
     public void dash(Vector3 dir) {
         controller.rb.drag -= 5;
-        new Timer().runTaskLater(() => { controller.rb.drag += 5; }, 0.2f);
         addSpeed(100, 0.2f);
         controller.rb.AddForce(dir * (speed * 10));
+        new Timer(gameObject).runTaskLater(() => {
+            controller.rb.drag += 5;
+        }, 0.2f);
     }
 
     public void addSpeed(float speedOffset, float duration) {
         speed += speedOffset;
-        new Timer().runTaskLater(() => { speed -= speedOffset; }, duration);
+        new Timer(gameObject).runTaskLater(() => { speed -= speedOffset; }, duration);
     }
 
     public void collectCoin(GameObject coinObj) {
