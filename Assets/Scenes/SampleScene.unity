@@ -582,6 +582,7 @@ GameObject:
   - component: {fileID: 534980063}
   - component: {fileID: 534980066}
   - component: {fileID: 534980067}
+  - component: {fileID: 534980068}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -659,6 +660,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a26de499d7319ec46bb9427f0aee948a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &534980068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534980062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e9ec7215fa473ca4e41bda52bb90a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &894102011
@@ -765,7 +778,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1012058474}
-  cl: {fileID: 1012058475}
   rb: {fileID: 1012058469}
   renderer: {fileID: 1012058467}
   speed: 200

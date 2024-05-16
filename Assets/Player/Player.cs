@@ -9,6 +9,11 @@ public class Player : MonoBehaviour {
     public Rigidbody2D rb;
     public new SpriteRenderer renderer;
     public float speed;
+    public static Player instance;
+
+    private void Start() {
+        instance = this;
+    }
 
     private void FixedUpdate() {
         motionStretch();
