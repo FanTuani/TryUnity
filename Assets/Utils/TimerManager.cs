@@ -14,7 +14,7 @@ public class TimerManager : MonoBehaviour {
             timer.coolDown -= Time.deltaTime;
             if (timer.coolDown <= 0) {
                 removeTimers.Add(timer);
-                if (!gameObject) continue;
+                if (!gameObject || !gameObject.activeSelf) continue;
                 timer.action();
             }
         }

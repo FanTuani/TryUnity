@@ -31,14 +31,12 @@ public class Player : MonoBehaviour {
         controller.rb.drag -= 5;
         addSpeed(100, 0.2f);
         controller.rb.AddForce(dir * (speed * 10));
-        new Timer(gameObject).runTaskLater(() => {
-            controller.rb.drag += 5;
-        }, 0.2f);
+        new Timer().runTaskLater(() => { controller.rb.drag += 5; }, gameObject, 0.2f);
     }
 
     public void addSpeed(float speedOffset, float duration) {
         speed += speedOffset;
-        new Timer(gameObject).runTaskLater(() => { speed -= speedOffset; }, duration);
+        new Timer().runTaskLater(() => { speed -= speedOffset; }, gameObject, duration);
     }
 
     public void collectCoin(GameObject coinObj) {

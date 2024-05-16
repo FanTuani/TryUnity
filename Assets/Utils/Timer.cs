@@ -9,12 +9,12 @@ public class Timer {
     // public Timer() {
     //     TimerManager.timers.Add(this);
     // }
-    public Timer(GameObject gameObject) {
-        this.gameObject = gameObject;
+    public Timer() {
         TimerManager.timers.Add(this);
     }
 
-    public void runTaskLater(Action action, float coolDown) {
+    public void runTaskLater(Action action, GameObject gameObject, float coolDown) {
+        this.gameObject = gameObject;
         this.action = action;
         this.coolDown = coolDown;
     }
