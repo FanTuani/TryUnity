@@ -50,9 +50,12 @@ TagManager:
   - name: Trail
     uniqueID: 4250941897
     locked: 0
-  - name: GameObject
+  - name: Entity
     uniqueID: 4189426099
     locked: 0
-  - name: Effects
+  - name: GameElement
+    uniqueID: 395458641
+    locked: 0
+  - name: Effect
     uniqueID: 3491118033
     locked: 0

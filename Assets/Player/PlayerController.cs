@@ -6,16 +6,35 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     public Rigidbody2D rb;
     public Player player;
+    public static PlayerController instance;
 
-    void FixedUpdate() {
+    private void Start() {
+        if (instance == null) {
+            instance = this;
+        }
+    }
+
+    private void FixedUpdate() {
         moveUpdate();
     }
 
-    void Update() {
+    private void Update() {
         dashUpdate();
+        if (Input.GetMouseButton(0)) {
+            Player.instance.attack();
+        }
     }
 
-    private Vector3 getInputMoveDir() {
+    private void moveUpdate() {
+        Vector3 dir = getInputMoveDir();
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            rb.AddForce(dir * player.speed / 2);
+        } else {
+            rb.AddForce(dir * player.speed);
+        }
+    }
+
+    public Vector3 getInputMoveDir() {
         Vector3 dir = default;
         if (Input.GetKey("w")) dir += Vector3.up * Time.deltaTime;
         if (Input.GetKey("a")) dir += Vector3.left * Time.deltaTime;
@@ -24,14 +43,6 @@ public class PlayerController : MonoBehaviour {
         return dir.normalized;
     }
 
-    void moveUpdate() {
-        Vector3 dir = getInputMoveDir();
-        if (Input.GetKey(KeyCode.LeftShift)) {
-            rb.AddForce(dir * player.speed / 2);
-        } else {
-            rb.AddForce(dir * player.speed);
-        }
-    }
 
     void dashUpdate() {
         if (!Input.GetKeyDown("space")) return;

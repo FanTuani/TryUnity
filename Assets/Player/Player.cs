@@ -5,11 +5,15 @@ using UnityEngine;
 using DG.Tweening;
 
 public class Player : MonoBehaviour {
-    public PlayerController controller;
     public Rigidbody2D rb;
     public new SpriteRenderer renderer;
+
     public float speed;
+
+    // public StateMachine state;
     public static Player instance;
+
+    public bool isAttacking, isDashing;
 
     private void Start() {
         instance = this;
@@ -33,10 +37,11 @@ public class Player : MonoBehaviour {
     }
 
     public void dash(Vector3 dir) {
-        controller.rb.drag -= 5;
+        PlayerController.instance.rb.drag -= 5;
         addSpeed(100, 0.2f);
-        controller.rb.AddForce(dir * (speed * 10));
-        new Timer().runTaskLater(() => { controller.rb.drag += 5; }, gameObject, 0.2f);
+        PlayerController.instance.rb.AddForce(dir * (speed * 10));
+        new Timer().runTaskLater(() => { PlayerController.instance.rb.drag += 5; },
+            gameObject, 0.2f);
     }
 
     public void addSpeed(float speedOffset, float duration) {
@@ -50,5 +55,15 @@ public class Player : MonoBehaviour {
         sequence.Append(renderer.DOColor(Color.green, 1f));
         CoinManager.instance.collectCoin(coinObj, getVelocity());
         CoinTextManager.instance.updateCoinText();
+    }
+
+    private Timer combat2RelaxTimer;
+
+    public void attack() {
+        if (isAttacking) return;
+        // state.changeState(PlayerStates.COMBAT);
+        isAttacking = true;
+        new Timer().runTaskLater(() => { isAttacking = false; }, gameObject, 0.2f);
+        Sword.instance.attack();
     }
 }
